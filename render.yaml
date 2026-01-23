@@ -1,0 +1,25 @@
+# Render deployment configuration
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: feast-backend
+    runtime: python
+    region: oregon  # or choose your preferred region
+    plan: free
+    buildCommand: |
+      cd backend
+      pip install -r requirements.txt
+      python scripts/fetch_mealdb.py || true
+    startCommand: |
+      cd backend
+      gunicorn main:app --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: OPENROUTER_API_KEY
+        sync: false  # Set this manually in Render dashboard
+      - key: CORS_ORIGINS
+        value: https://your-app.vercel.app  # Update with your Vercel URL
+    healthCheckPath: /health
+    autoDeploy: true

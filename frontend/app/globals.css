@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+
+@custom-variant dark (&:is(.dark *));
+
+/* New color scheme: dark charcoal with ember orange accent */
+:root {
+  --background: #050608;
+  --foreground: #f4f4f5;
+  --card: #0b0d12;
+  --card-foreground: #f4f4f5;
+  --popover: #0b0d12;
+  --popover-foreground: #f4f4f5;
+  --primary: #ff8a3d;
+  --primary-foreground: #050608;
+  --secondary: #12141c;
+  --secondary-foreground: #a1a1aa;
+  --muted: #12141c;
+  --muted-foreground: #a1a1aa;
+  --accent: #ff8a3d;
+  --accent-foreground: #050608;
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: #f4f4f5;
+  --border: rgba(255, 255, 255, 0.06);
+  --input: #0b0d12;
+  --ring: #ff8a3d;
+  --chart-1: #ff8a3d;
+  --chart-2: oklch(0.7 0.15 45);
+  --chart-3: oklch(0.6 0.18 280);
+  --chart-4: oklch(0.75 0.12 200);
+  --chart-5: oklch(0.8 0.1 60);
+  --radius: 1rem;
+  --sidebar: #0b0d12;
+  --sidebar-foreground: #f4f4f5;
+  --sidebar-primary: #ff8a3d;
+  --sidebar-primary-foreground: #050608;
+  --sidebar-accent: #12141c;
+  --sidebar-accent-foreground: #a1a1aa;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-ring: #ff8a3d;
+  /* Accent glow color for focus states */
+  --accent-glow: rgba(255, 138, 61, 0.18);
+  /* Added center glow color for background */
+  --center-glow: rgba(255, 180, 120, 0.04);
+}
+
+@theme inline {
+  /* Updated fonts to Outfit and Playfair Display */
+  --font-sans: "Outfit", "Outfit Fallback", system-ui, sans-serif;
+  --font-heading: "Playfair Display", "Playfair Display Fallback", Georgia, serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Radial gradient with subtle warm center glow for depth */
+    background: radial-gradient(ellipse 60% 50% at 50% 45%, var(--center-glow) 0%, transparent 60%),
+      radial-gradient(ellipse at center, #12141c 0%, #050608 70%);
+    min-height: 100vh;
+  }
+}
+
+/* Updated scrollbar styles - removed scrollbar-gutter to allow flush right edge */
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Scrollbar appears flush to the right edge */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Premium focus glow for inputs */
+.focus-glow {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.focus-glow:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  outline: none;
+}
+
+/* Custom font utilities */
+@layer utilities {
+  .font-lobster {
+    font-family: var(--font-lobster), 'Lobster Two', cursive;
+  }
+}
