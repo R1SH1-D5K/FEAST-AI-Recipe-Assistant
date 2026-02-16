@@ -17,11 +17,6 @@ DB_PATH = DATA_DIR / "recipes.db"
 # Ensure data directory exists
 DATA_DIR.mkdir(exist_ok=True)
 
-# Turso Configuration
-TURSO_DATABASE_URL = os.getenv("TURSO_DATABASE_URL", "libsql://feast-db-kiillah.aws-ap-south-1.turso.io")
-TURSO_AUTH_TOKEN = os.getenv("TURSO_AUTH_TOKEN", "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3Njc2MzQzNDksImlkIjoiMzM2ODE1YmQtNWIyYi00Yzk5LThlNTgtYTkyYjZjZmRiOTIxIiwicmlkIjoiYmE0M2ExNWUtYWY2Yi00ODE2LWE2MjAtN2YxOWU1OGU3MTMzIn0.hJ1G71EgWtGfrKl-dF4VIjCGTMG1c4ohlKtYCmL2Qfk8t3WZnfM8TIsn1IxeH27vsCGyB4VEA33IKZFEzzpFBA")
-USE_TURSO = os.getenv("USE_TURSO", "true").lower() == "true"
-
 # OpenRouter Configuration
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
@@ -39,7 +34,7 @@ MAX_CANDIDATES = 5
 MIN_INGREDIENT_MATCH_SCORE = 0.3
 
 # Spoonacular API Configuration
-SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY", "ba13a882d7414ac3a81aab1c3f0a8a61")
+SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY", "")
 SPOONACULAR_BASE_URL = "https://api.spoonacular.com"
 
 # TheMealDB API (legacy - kept for reference)
